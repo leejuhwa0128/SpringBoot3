@@ -1,9 +1,6 @@
 package com.example.firstproject.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -14,13 +11,16 @@ import lombok.ToString;
 @Entity // 엔티티 선언
 public class Article {
     @Id // 엔티티의 대푯값 지정
-    @GeneratedValue //자동 생성 기능 추가(숫자가 자동으로 매겨짐)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //자동 생성 기능 추가(숫자가 자동으로 매겨짐) // DB가 아이디 자동 생성
     private Long id;
     @Column // title 필드 선언, DB 테이블의 title 열과 연결됨
     private String title;
     @Column
     private  String content;
 
+    public Long getId(){ // 데이터 타입을 String -> Long 변경해야 함
+        return id;
+    }
    // Article(){ @NoArgsConstructor을 사용하면 작성하지 않아도 됌
    //
    // }

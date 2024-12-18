@@ -7,6 +7,7 @@ import lombok.ToString; // ToString 패키지 자동 임포트
 @AllArgsConstructor
 @ToString // 새 이노테이션 추가
 public class ArticleForm {
+    private Long id; // id 필드 추가
     private String title; // 제목을 받을 필드
     private String content; // 내용을 받을 필드
 
@@ -26,6 +27,6 @@ public class ArticleForm {
    // }
 
     public Article toEntity() {
-        return new Article(null, title, content);
+        return new Article(id, title, content);
     }
 }
